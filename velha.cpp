@@ -16,5 +16,18 @@ int verificar_estado_jogo(const int tabuleiro[3][3]) {
         }
     }
 
+    // Diagonal principal
+    if (tabuleiro[0][0] == tabuleiro[1][1] && 
+        tabuleiro[1][1] == tabuleiro[2][2] && 
+        tabuleiro[0][0] != 0) {
+        return tabuleiro[0][0]; // Retorna 1 (X) ou 2 (O)
+    }
+
+    // Diagonal secundária 
+    if (tabuleiro[0][2] == tabuleiro[1][1] && 
+        tabuleiro[1][1] == tabuleiro[2][0] && 
+        tabuleiro[0][2] != 0) {
+        return tabuleiro[0][2]; // Retorna 1 (X) ou 2 (O)
+    }
     return -1;
 }

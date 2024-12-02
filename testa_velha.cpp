@@ -21,3 +21,13 @@ TEST_CASE("Linha completa de X deve retornar X como vencedor", "[vencedor]") {
     };
     REQUIRE(verificar_estado_jogo(tabuleiro) == 1); // Deve retornar 1 (X venceu)
 }
+
+// Teste coluna completa
+TEST_CASE("Coluna completa de O deve retornar O como vencedor", "[vencedor]") {
+    int tabuleiro[3][3] = {
+        {2, 0, 0},
+        {2, 0, 0},
+        {2, 0, 0}
+    };
+    REQUIRE(verificar_estado_jogo(tabuleiro) == 2); // Deve retornar 2 (O venceu)
+}

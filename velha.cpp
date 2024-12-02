@@ -29,5 +29,21 @@ int verificar_estado_jogo(const int tabuleiro[3][3]) {
         tabuleiro[0][2] != 0) {
         return tabuleiro[0][2]; // Retorna 1 (X) ou 2 (O)
     }
+
+    // Empate
+    bool empate = true;
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            if (tabuleiro[i][j] == 0) { 
+                empate = false;
+                break;
+            }
+        }
+    }
+    if (empate) {
+        return 0;
+    }
+
+    //Indefinido
     return -1;
 }

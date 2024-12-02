@@ -50,3 +50,12 @@ TEST_CASE("Diagonal secundária de O deve retornar O como vencedor", "[vencedor]
     };
     REQUIRE(verificar_estado_jogo(tabuleiro) == 2); // Deve retornar 2 (O venceu)
 }
+
+TEST_CASE("Tabuleiro cheio sem vencedor deve retornar empate", "[empate]") {
+    int tabuleiro[3][3] = {
+        {1, 2, 1},
+        {1, 1, 2},
+        {2, 1, 2}
+    };
+    REQUIRE(verificar_estado_jogo(tabuleiro) == 0); // Deve retornar 0 (empate)
+}

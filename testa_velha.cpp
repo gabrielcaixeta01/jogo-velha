@@ -16,7 +16,7 @@ TEST_CASE("Tabuleiro vazio deve retornar jogo indefinido", "[indefinido]") {
 TEST_CASE("Linha completa de X deve retornar X como vencedor", "[vencedor]") {
     int tabuleiro[3][3] = {
         {1, 1, 1}, // Linha completa de X
-        {0, 0, 0},
+        {2, 0, 2},
         {0, 0, 0}
     };
     REQUIRE(verificar_estado_jogo(tabuleiro) == 1); // Deve retornar 1 (X venceu)
@@ -25,32 +25,34 @@ TEST_CASE("Linha completa de X deve retornar X como vencedor", "[vencedor]") {
 // Teste coluna completa
 TEST_CASE("Coluna completa de X deve retornar X como vencedor", "[vencedor]") {
     int tabuleiro[3][3] = {
+        {1, 2, 0},
         {1, 0, 0},
-        {1, 0, 0},
-        {1, 0, 0}
+        {1, 0, 2}
     };
     REQUIRE(verificar_estado_jogo(tabuleiro) == 1); // Deve retornar 1 (X venceu)
 }
 
-// Teste diagonal completa
+// Teste diagonal principal
 TEST_CASE("Diagonal principal de X deve retornar X como vencedor", "[vencedor]") {
     int tabuleiro[3][3] = {
         {1, 0, 0},
         {0, 1, 0},
-        {0, 0, 1}
+        {2, 2, 1}
     };
     REQUIRE(verificar_estado_jogo(tabuleiro) == 1); // Deve retornar 1 (X venceu)
 }
 
+// Teste diagonal secundária
 TEST_CASE("Diagonal secundária de O deve retornar O como vencedor", "[vencedor]") {
     int tabuleiro[3][3] = {
         {0, 0, 2},
-        {0, 2, 0},
-        {2, 0, 0}
+        {1, 2, 0},
+        {2, 1, 0}
     };
     REQUIRE(verificar_estado_jogo(tabuleiro) == 2); // Deve retornar 2 (O venceu)
 }
 
+// Teste empate, tabuleiro cheio
 TEST_CASE("Tabuleiro cheio sem vencedor deve retornar empate", "[empate]") {
     int tabuleiro[3][3] = {
         {1, 2, 1},
@@ -60,15 +62,7 @@ TEST_CASE("Tabuleiro cheio sem vencedor deve retornar empate", "[empate]") {
     REQUIRE(verificar_estado_jogo(tabuleiro) == 0); // Deve retornar 0 (empate)
 }
 
-TEST_CASE("Empate com tabuleiro cheio e alternância de X e O", "[empate]") {
-    int tabuleiro[3][3] = {
-        {1, 2, 1},
-        {2, 1, 2},
-        {2, 1, 2}
-    };
-    REQUIRE(verificar_estado_jogo(tabuleiro) == 0); // Deve retornar 0 (empate)
-}
-
+// Teste com mais de um vencedor
 TEST_CASE("Jogo impossível com dois vencedores simultâneos", "[impossivel]") {
     int tabuleiro[3][3] = {
         {1, 1, 1}, // X vence na primeira linha
@@ -78,6 +72,7 @@ TEST_CASE("Jogo impossível com dois vencedores simultâneos", "[impossivel]") {
     REQUIRE(verificar_estado_jogo(tabuleiro) == -2); // Deve retornar -2 (jogo impossível)
 }
 
+// Teste com jogo indefinido
 TEST_CASE("Tabuleiro parcialmente preenchido deve retornar indefinido", "[indefinido]") {
     int tabuleiro[3][3] = {
         {1, 0, 0},
@@ -85,4 +80,15 @@ TEST_CASE("Tabuleiro parcialmente preenchido deve retornar indefinido", "[indefi
         {0, 0, 0}
     };
     REQUIRE(verificar_estado_jogo(tabuleiro) == -1); // Deve retornar -1 (indefinido)
+}
+
+
+// Teste com um X jogando mais vezes, jogo impossível
+TEST_CASE("Jogo impossível com mais X do que O permitido", "[impossivel]") {
+    int tabuleiro[3][3] = {
+        {1, 1, 1},
+        {1, 0, 2},
+        {0, 0, 2}
+    };
+    REQUIRE(verificar_estado_jogo(tabuleiro) == -2); // Deve retornar -2 (jogo impossível)
 }

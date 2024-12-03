@@ -77,3 +77,12 @@ TEST_CASE("Jogo impossível com dois vencedores simultâneos", "[impossivel]") {
     };
     REQUIRE(verificar_estado_jogo(tabuleiro) == -2); // Deve retornar -2 (jogo impossível)
 }
+
+TEST_CASE("Tabuleiro parcialmente preenchido deve retornar indefinido", "[indefinido]") {
+    int tabuleiro[3][3] = {
+        {1, 0, 0},
+        {0, 2, 0},
+        {0, 0, 0}
+    };
+    REQUIRE(verificar_estado_jogo(tabuleiro) == -1); // Deve retornar -1 (indefinido)
+}

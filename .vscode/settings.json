@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "/Users/gabrielcaixeta/Developer/mp/jogo-velha/Catch2"
+    "cmake.sourceDirectory": "/Users/gabrielcaixeta/Developer/mp/jogo-velha/Catch2",
+    "files.trimTrailingWhitespace": true,
 }

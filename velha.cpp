@@ -1,4 +1,5 @@
-#include "velha.hpp"
+// Copyright [2024] Gabriel Caixeta
+#include "include/velha.hpp"
 
 int verificar_estado_jogo(const int tabuleiro[3][3]) {
     int countX = 0, countO = 0;
@@ -17,8 +18,8 @@ int verificar_estado_jogo(const int tabuleiro[3][3]) {
     int vencedorX = 0, vencedorO = 0;
 
     for (int i = 0; i < 3; ++i) {
-        if (tabuleiro[i][0] == tabuleiro[i][1] && 
-            tabuleiro[i][1] == tabuleiro[i][2] && 
+        if (tabuleiro[i][0] == tabuleiro[i][1] &&
+            tabuleiro[i][1] == tabuleiro[i][2] &&
             tabuleiro[i][0] != 0) {
             if (tabuleiro[i][0] == 1) vencedorX++;
             if (tabuleiro[i][0] == 2) vencedorO++;
@@ -26,23 +27,23 @@ int verificar_estado_jogo(const int tabuleiro[3][3]) {
     }
 
     for (int i = 0; i < 3; ++i) {
-        if (tabuleiro[0][i] == tabuleiro[1][i] && 
-            tabuleiro[1][i] == tabuleiro[2][i] && 
+        if (tabuleiro[0][i] == tabuleiro[1][i] &&
+            tabuleiro[1][i] == tabuleiro[2][i] &&
             tabuleiro[0][i] != 0) {
             if (tabuleiro[0][i] == 1) vencedorX++;
             if (tabuleiro[0][i] == 2) vencedorO++;
         }
     }
 
-    if (tabuleiro[0][0] == tabuleiro[1][1] && 
-        tabuleiro[1][1] == tabuleiro[2][2] && 
+    if (tabuleiro[0][0] == tabuleiro[1][1] &&
+        tabuleiro[1][1] == tabuleiro[2][2] &&
         tabuleiro[0][0] != 0) {
         if (tabuleiro[0][0] == 1) vencedorX++;
         if (tabuleiro[0][0] == 2) vencedorO++;
     }
 
-    if (tabuleiro[0][2] == tabuleiro[1][1] && 
-        tabuleiro[1][1] == tabuleiro[2][0] && 
+    if (tabuleiro[0][2] == tabuleiro[1][1] &&
+        tabuleiro[1][1] == tabuleiro[2][0] &&
         tabuleiro[0][2] != 0) {
         if (tabuleiro[0][2] == 1) vencedorX++;
         if (tabuleiro[0][2] == 2) vencedorO++;
